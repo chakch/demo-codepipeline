@@ -1,4 +1,4 @@
-version: 0.2
+version: 0.3
 
 #env:
   #variables:
@@ -39,6 +39,7 @@ phases:
       - python --version
       - export author=$(git log -1 --format="%cE")
       - echo $author
+      - env
       # - command
   #post_build:
     #commands:
