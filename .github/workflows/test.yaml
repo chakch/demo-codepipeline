@@ -27,5 +27,7 @@ jobs:
         id: plan
         run: terraform plan -no-color
         continue-on-error: true
-      - run: ls -la
+      - name: Wait for approval
+        uses: trstringer/manual-approval@v1
+        run: ls -la
 
