@@ -29,8 +29,6 @@ jobs:
         continue-on-error: true
       - name: Wait for approval
         uses: trstringer/manual-approval@v1
-        with:
-          secret: ${{ steps.generate_token.outputs.token }}
-          approvers: myteam
-          minimum-approvals: 1
+        timeout-minutes: 60
+      - run: ls -la
 
