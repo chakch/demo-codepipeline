@@ -5,10 +5,10 @@ jobs:
     runs-on: codebuild-codebuild-project-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
       - run: echo "Hello World!"
-      - uses: actions/checkout@v4
-      - uses: hashicorp/setup-terraform@v3
   Terraform:   
     runs-on: codebuild-codebuild-project-${{ github.run_id }}-${{ github.run_attempt }}
+      - uses: actions/checkout@v4
+      - uses: hashicorp/setup-terraform@v3
     steps:
       - name: Terraform fmt
         id: fmt
