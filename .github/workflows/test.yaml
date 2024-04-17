@@ -5,6 +5,7 @@ jobs:
     runs-on: codebuild-codebuild-project-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
       - run: echo "Hello World!"
+      - run: env
   Terraform:   
     runs-on: codebuild-codebuild-project-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
