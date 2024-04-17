@@ -29,5 +29,4 @@ jobs:
         continue-on-error: true
       - name: Wait for approval
         uses: trstringer/manual-approval@v1
-        run: ls -la
 
