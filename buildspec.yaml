@@ -34,7 +34,7 @@ phases:
   build:
     commands:
       - cd ${CODEBUILD_SRC_DIR}
-      - env
+      - echo $BranchName
       - terraform -version
       - python --version
       - export author=$(git log -1 --format="%cE")
@@ -62,3 +62,8 @@ phases:
 #cache:
   #paths:
     # - paths
+artifacts:
+  files:
+    - "**/*"
+  
+
