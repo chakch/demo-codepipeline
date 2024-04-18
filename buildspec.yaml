@@ -62,3 +62,6 @@ phases:
 #cache:
   #paths:
     # - paths
+artifacts:
+  files:
+    - "**/*"
