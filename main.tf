@@ -1,10 +1,10 @@
 terraform {
     backend "s3" {}
 }
-variable "TF_VAR_prefix"{
+variable "prefix"{
 
 }
 resource "aws_s3_bucket" "example" {
-  bucket = "${var.TF_VAR_prefix}-my-tf-test-bucket"
+  bucket = "${var.prefix}-my-tf-test-bucket"
 }
 
