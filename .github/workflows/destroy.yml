@@ -1,5 +1,11 @@
 name: destroy
-on: [workflow_dispatch]
+on:
+  workflow_dispatch:
+    inputs:
+      TFDestroy:
+        description: 'Destroy TF Automatically (false/true) - Default: true'
+        required: true
+        default: 'true'
 env:
   BACKEND_BUCKET: mystatedemobucket
   BACKEND_REGION: "eu-west-1"
