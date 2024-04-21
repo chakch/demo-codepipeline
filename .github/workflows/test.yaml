@@ -40,7 +40,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: my-artifact
-          path: "**"
+          path: "tfplan"
   # create_secret:
   #   environment: dev
   #   runs-on: ubuntu-latest
@@ -105,9 +105,6 @@ jobs:
       id: init
       run: terraform init -backend-config="key=$TF_VAR_prefix" -backend-config="region=$BACKEND_REGION" -backend-config="bucket=$BACKEND_BUCKET"
       
-    - name: Terraform plan
-      id: apply
-      run: terraform plan
     # - name: Terraform apply
     #   id: apply
     #   run: terraform apply tfplan
