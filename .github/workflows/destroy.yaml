@@ -1,4 +1,4 @@
-name: Hello World
+name: Delete
 on: [workflow_dispatch]
 env:
   BACKEND_BUCKET: mystatedemobucket
