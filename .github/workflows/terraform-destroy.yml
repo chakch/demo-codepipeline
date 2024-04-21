@@ -1,5 +1,5 @@
 name: terraform-destroy
-on: delete
+on: push
 env:
   BACKEND_BUCKET: mystatedemobucket
   BACKEND_REGION: "eu-west-1"
@@ -13,11 +13,14 @@ jobs:
     - uses: hashicorp/setup-terraform@v3
       with:
         terraform_version: 1.5.1
-    - run: echo "TF_VAR_prefix=${GITHUB_REF_NAME}" >> "$GITHUB_ENV"
-    - name: Terraform Init
-      id: init
-      run: terraform init -backend-config="key=$TF_VAR_prefix" -backend-config="region=$BACKEND_REGION" -backend-config="bucket=$BACKEND_BUCKET"
+    env:
+      GITHUB_CONTEXT: ${{ toJson(github) }}
+      run: echo "$GITHUB_CONTEXT"
+    # - run: echo "TF_VAR_prefix=${ref_type}" >> "$GITHUB_ENV"
+    # - name: Terraform Init
+    #   id: init
+    #   run: terraform init -backend-config="key=$TF_VAR_prefix" -backend-config="region=$BACKEND_REGION" -backend-config="bucket=$BACKEND_BUCKET"
       
-    - name: Terraform destroy
-      id: apply
-      run: terraform apply -destroy -auto-approve
+    # - name: Terraform destroy
+    #   id: apply
+    #   run: terraform apply -destroy -auto-approve
