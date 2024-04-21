@@ -105,6 +105,9 @@ jobs:
       id: init
       run: terraform init -backend-config="key=$TF_VAR_prefix" -backend-config="region=$BACKEND_REGION" -backend-config="bucket=$BACKEND_BUCKET"
       
-    - name: Terraform apply
+    - name: Terraform plan
       id: apply
-      run: terraform apply tfplan
+      run: terraform plan
+    # - name: Terraform apply
+    #   id: apply
+    #   run: terraform apply tfplan
