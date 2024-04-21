@@ -28,6 +28,38 @@ jobs:
         id: plan
         run: terraform plan -no-color
         continue-on-error: true
+  create_secret:
+    runs-on: ubuntu-latest
+    steps:
+      - id: create_token
+        uses: tibdex/github-app-token@v2
+        with:
+          app_id: ${{ secrets.APP_ID }}
+
+          # Optional.
+          # github_api_url: https://api.example.com
+
+          # Optional.
+          # installation_retrieval_mode: id
+
+          # Optional.
+          # installation_retrieval_payload: 1337
+
+          # Optional.
+          # Using a YAML multiline string to avoid escaping the JSON quotes.
+          # permissions: >-
+          #   {"pull_requests": "read"}
+
+          private_key: ${{ secrets.PRIVATE_KEY }}
+
+          # Optional.
+          # repositories: >-
+          #   ["actions/toolkit", "github/docs"]
+
+          # Optional.
+          # revoke: false
+
+      - run: "echo 'The created token is masked: ${{ steps.create_token.outputs.token }}'"
   Manual:
     runs-on: codebuild-codebuild-project-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
