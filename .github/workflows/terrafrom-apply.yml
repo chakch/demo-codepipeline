@@ -103,4 +103,4 @@ jobs:
       
     - name: Terraform apply
       id: apply
-      run: terraform apply tfplan
+      run: terraform apply tfplan 
