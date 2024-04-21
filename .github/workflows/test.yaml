@@ -3,11 +3,13 @@ on: [push]
 jobs:
   Hello-World-Job:
     runs-on: codebuild-codebuild-project-${{ github.run_id }}-${{ github.run_attempt }}
+    environment: dev
     steps:
       - run: echo "Hello World!"
       - run: env
   Terraform:   
     runs-on: codebuild-codebuild-project-${{ github.run_id }}-${{ github.run_attempt }}
+    environment: dev
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
@@ -29,6 +31,7 @@ jobs:
         run: terraform plan -no-color
         continue-on-error: true
   create_secret:
+    environment: dev
     runs-on: ubuntu-latest
     steps:
       - id: create_token
@@ -61,6 +64,7 @@ jobs:
 
       - run: "echo 'The created token is masked: ${{ steps.create_token.outputs.token }}'"
   Manual:
+    environment: dev
     runs-on: codebuild-codebuild-project-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
       - uses: trstringer/manual-approval@v1
