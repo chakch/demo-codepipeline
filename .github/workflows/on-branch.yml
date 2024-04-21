@@ -10,4 +10,4 @@ jobs:
     runs-on: codebuild-codebuild-project-${{ github.run_id }}-${{ github.run_attempt }}
     steps:
         - uses: actions/checkout@v4
-        - uses: ./.github/workflows/terraform-apply.yml
+        - uses: .github/workflows/terraform-apply.yml
