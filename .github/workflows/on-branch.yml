@@ -7,4 +7,5 @@ on:
 
 jobs:
   terraform:
-    uses: .github/workflows/terraform-apply.yml
+    - uses: actions/checkout@v4
+    - uses: .github/workflows/terraform-apply.yml
