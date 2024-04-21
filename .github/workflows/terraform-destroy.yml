@@ -1,4 +1,4 @@
-name: destroy
+name: terraform-destroy
 on:
   workflow_dispatch:
     inputs:
@@ -25,4 +25,4 @@ jobs:
       
     - name: Terraform destroy
       id: apply
-      run: terraform apply -destroy -auto-approve 
+      run: terraform apply -destroy -auto-approve
