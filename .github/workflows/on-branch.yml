@@ -1,0 +1,10 @@
+name: Reusable Workflow user
+
+on:
+    push:
+      branches:
+        - 'test**'  
+
+jobs:
+  terraform:
+    uses: chakch/demo-codepipeline/.github/workflows/terraform-apply.yml@test16
