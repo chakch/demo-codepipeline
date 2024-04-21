@@ -8,7 +8,6 @@ on:
 env:
   BACKEND_BUCKET: mystatedemobucket
   BACKEND_REGION: "eu-west-1"
-  TF_VAR_prefix: $GITHUB_REF_NAME
 jobs:
   Terraform:   
     runs-on: codebuild-codebuild-project-${{ github.run_id }}-${{ github.run_attempt }}
@@ -25,7 +24,7 @@ jobs:
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
-      
+      - run: export TF_VAR_prefix=$GITHUB_REF_NAME
       - name: Terraform Plan
         id: plan
         run: terraform plan -out tfplan -no-color
