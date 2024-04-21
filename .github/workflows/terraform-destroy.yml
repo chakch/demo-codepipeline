@@ -1,17 +1,11 @@
 name: terraform-destroy
-on:
-  workflow_dispatch:
-    inputs:
-      TFDestroy:
-        description: 'Destroy TF Automatically (false/true) - Default: true'
-        required: true
-        default: 'true'
+on: delete
 env:
   BACKEND_BUCKET: mystatedemobucket
   BACKEND_REGION: "eu-west-1"
-  TF_VAR_prefix: dev
 jobs:
   Terraform-destroy:   
+    if: github.event.ref == 'branch'
     runs-on: codebuild-codebuild-project-${{ github.run_id }}-${{ github.run_attempt }}
     environment: dev
     steps:
@@ -19,6 +13,7 @@ jobs:
     - uses: hashicorp/setup-terraform@v3
       with:
         terraform_version: 1.5.1
+    - run: echo "TF_VAR_prefix=${GITHUB_REF_NAME}" >> "$GITHUB_ENV"
     - name: Terraform Init
       id: init
       run: terraform init -backend-config="key=$TF_VAR_prefix" -backend-config="region=$BACKEND_REGION" -backend-config="bucket=$BACKEND_BUCKET"
