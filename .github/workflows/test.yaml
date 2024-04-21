@@ -91,6 +91,7 @@ jobs:
         # If unspecified, all artifacts for the run are downloaded.
         # Optional.
         name: my-artifact
+    - run: ls -la 
     - uses: hashicorp/setup-terraform@v3
     - name: Terraform apply
       id: apply
