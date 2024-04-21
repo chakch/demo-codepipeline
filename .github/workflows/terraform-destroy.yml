@@ -1,5 +1,5 @@
 name: terraform-destroy
-on: push
+on: delete
 env:
   BACKEND_BUCKET: mystatedemobucket
   BACKEND_REGION: "eu-west-1"
