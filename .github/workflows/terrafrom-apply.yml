@@ -1,5 +1,5 @@
 name: Apply
-on: []
+on: [workflow_call]
 env:
   BACKEND_BUCKET: mystatedemobucket
   BACKEND_REGION: "eu-west-1"
