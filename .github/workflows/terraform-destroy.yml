@@ -12,10 +12,8 @@ jobs:
     - uses: hashicorp/setup-terraform@v3
       with:
         terraform_version: 1.5.1
-    env:
-      GITHUB_CONTEXT: ${{ toJson(github) }}
-      run: echo "$GITHUB_CONTEXT"
-    # - run: echo "TF_VAR_prefix=${ref_type}" >> "$GITHUB_ENV"
+    - run: echo "TF_VAR_prefix=${{github.event.ref}}" >> "$GITHUB_ENV"
+    - run: echo $TF_VAR_prefix
     # - name: Terraform Init
     #   id: init
     #   run: terraform init -backend-config="key=$TF_VAR_prefix" -backend-config="region=$BACKEND_REGION" -backend-config="bucket=$BACKEND_BUCKET"
