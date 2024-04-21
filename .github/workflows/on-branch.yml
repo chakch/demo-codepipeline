@@ -7,4 +7,4 @@ on:
 
 jobs:
   terraform:
-    uses: ./.github/workflows/terraform-apply.yml@test16
+    uses: ./.github/workflows/terraform-apply.yml
