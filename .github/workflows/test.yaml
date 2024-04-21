@@ -65,11 +65,6 @@ jobs:
           # revoke: false
 
       - run: "echo 'The created token is masked: ${{ steps.create_token.outputs.token }}'"
-  Manual:
-    environment: dev
-    # runs-on: codebuild-codebuild-project-${{ github.run_id }}-${{ github.run_attempt }}
-    runs-on: ubuntu-latest
-    steps:
       - uses: trstringer/manual-approval@v1
         with:
           secret: ${{ steps.create_token.outputs.token }}
