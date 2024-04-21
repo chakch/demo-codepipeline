@@ -5,7 +5,6 @@ env:
   BACKEND_REGION: "eu-west-1"
 jobs:
   Terraform-destroy:   
-    if: github.event.ref_type == 'branch'
     runs-on: codebuild-codebuild-project-${{ github.run_id }}-${{ github.run_attempt }}
     environment: dev
     steps:
