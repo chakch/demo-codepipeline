@@ -35,54 +35,55 @@ jobs:
         with:
           name: my-artifact
           path: **
-  create_secret:
-    environment: dev
-    runs-on: ubuntu-latest
-    outputs:
-      token: ${{ steps.create_token.outputs.token }}
-    steps:
-      - id: create_token
-        uses: tibdex/github-app-token@v2
-        with:
-          app_id: ${{ secrets.APP_ID }}
+  # create_secret:
+  #   environment: dev
+  #   runs-on: ubuntu-latest
+  #   outputs:
+  #     token: ${{ steps.create_token.outputs.token }}
+  #   steps:
+  #     - id: create_token
+  #       uses: tibdex/github-app-token@v2
+  #       with:
+  #         app_id: ${{ secrets.APP_ID }}
 
-          # Optional.
-          # github_api_url: https://api.example.com
+  #         # Optional.
+  #         # github_api_url: https://api.example.com
 
-          # Optional.
-          installation_retrieval_mode: repository
+  #         # Optional.
+  #         installation_retrieval_mode: repository
 
-          # Optional.
-          #installation_retrieval_payload: tibdex/github-app-token
+  #         # Optional.
+  #         #installation_retrieval_payload: tibdex/github-app-token
 
-          # Optional.
-          # Using a YAML multiline string to avoid escaping the JSON quotes.
-          # permissions: >-
-          #   {"pull_requests": "read"}
+  #         # Optional.
+  #         # Using a YAML multiline string to avoid escaping the JSON quotes.
+  #         # permissions: >-
+  #         #   {"pull_requests": "read"}
 
-          private_key: ${{ secrets.PRIVATE_KEY }}
+  #         private_key: ${{ secrets.PRIVATE_KEY }}
 
-          # Optional.
-          # repositories: >-
-          #   ["actions/toolkit", "github/docs"]
+  #         # Optional.
+  #         # repositories: >-
+  #         #   ["actions/toolkit", "github/docs"]
 
-          # Optional.
-          # revoke: false
+  #         # Optional.
+  #         # revoke: false
 
-      - run: "echo 'The created token is masked: ${{ steps.create_token.outputs.token }}'"
-      - uses: trstringer/manual-approval@v1
-        with:
-          secret: ${{ steps.create_token.outputs.token }}
-          approvers: chakch
-          minimum-approvals: 1
-          issue-title: "Deploying v1.3.5 to prod from staging"
-          issue-body: "Please approve or deny the deployment of version v1.3.5."
-          exclude-workflow-initiator-as-approver: false
-          additional-approved-words: ''
-          additional-denied-words: ''
-  Terraform:   
+  #     - run: "echo 'The created token is masked: ${{ steps.create_token.outputs.token }}'"
+  #     - uses: trstringer/manual-approval@v1
+  #       with:
+  #         secret: ${{ steps.create_token.outputs.token }}
+  #         approvers: chakch
+  #         minimum-approvals: 1
+  #         issue-title: "Deploying v1.3.5 to prod from staging"
+  #         issue-body: "Please approve or deny the deployment of version v1.3.5."
+  #         exclude-workflow-initiator-as-approver: false
+  #         additional-approved-words: ''
+  #         additional-denied-words: ''
+  Terraform-apply:   
     runs-on: codebuild-codebuild-project-${{ github.run_id }}-${{ github.run_attempt }}
     environment: dev
+    needs : ["Terraform"]
     steps:
     - uses: actions/download-artifact@v4
       with:
