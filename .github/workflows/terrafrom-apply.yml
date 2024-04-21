@@ -85,6 +85,8 @@ jobs:
     environment: dev
     needs : ["Terraform"]
     steps:
+    - run: echo "TF_VAR_prefix=${GITHUB_REF_NAME}" >> "$GITHUB_ENV"
+    - run: echo $TF_VAR_prefix
     - uses: actions/checkout@v4
     - uses: actions/download-artifact@v4
       with:
