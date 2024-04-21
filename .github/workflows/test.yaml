@@ -93,6 +93,9 @@ jobs:
         name: my-artifact
     - run: ls -la 
     - uses: hashicorp/setup-terraform@v3
+    - name: Terraform version
+      id: version
+      run: terraform version
     - name: Terraform apply
       id: apply
       run: terraform apply tfplan
