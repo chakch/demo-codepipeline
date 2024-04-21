@@ -43,10 +43,10 @@ jobs:
           # github_api_url: https://api.example.com
 
           # Optional.
-          # installation_retrieval_mode: id
+          installation_retrieval_mode: repository
 
           # Optional.
-          # installation_retrieval_payload: 1337
+          #installation_retrieval_payload: tibdex/github-app-token
 
           # Optional.
           # Using a YAML multiline string to avoid escaping the JSON quotes.
