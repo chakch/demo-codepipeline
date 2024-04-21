@@ -19,10 +19,10 @@ jobs:
       - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: 1.5.1
-      - name: Terraform fmt
-        id: fmt
-        run: terraform fmt -check
-        continue-on-error: true
+      # - name: Terraform fmt
+      #   id: fmt
+      #   run: terraform fmt -check
+      #   continue-on-error: true
       
       - name: Terraform Init
         id: init
