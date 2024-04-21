@@ -33,6 +33,8 @@ jobs:
   create_secret:
     environment: dev
     runs-on: ubuntu-latest
+    outputs:
+      token: ${{ steps.create_token.outputs.token }}
     steps:
       - id: create_token
         uses: tibdex/github-app-token@v2
@@ -69,7 +71,7 @@ jobs:
     steps:
       - uses: trstringer/manual-approval@v1
         with:
-          secret: ${{ github.TOKEN }}
+          secret: ${{ steps.create_token.outputs.token }}
           approvers: chakch
           minimum-approvals: 1
           issue-title: "Deploying v1.3.5 to prod from staging"
