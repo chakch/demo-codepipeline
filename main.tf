@@ -1,6 +1,7 @@
 terraform {
     backend "s3" {}
 }
+
 terraform {
   required_providers {
     aws = {
@@ -10,6 +11,7 @@ terraform {
   }
 }
 
+
 variable "prefix"{
 
 }
@@ -18,3 +20,4 @@ resource "aws_s3_bucket" "example" {
   force_destroy = true
 
 }
+
