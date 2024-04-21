@@ -13,7 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
-        terraform_version: 1.5.1
+        with:
+          terraform_version: 1.5.1
       - name: Terraform fmt
         id: fmt
         run: terraform fmt -check
@@ -94,7 +95,8 @@ jobs:
         name: my-artifact
     - run: ls -la 
     - uses: hashicorp/setup-terraform@v3
-      terraform_version: 1.5.1
+      with:
+        terraform_version: 1.5.1
     - name: Terraform version
       id: version
       run: terraform version
