@@ -9,6 +9,7 @@ terraform {
       version = "5.46.0"
     }
   }
+
 }
 
 variable "prefix"{
