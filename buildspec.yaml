@@ -38,6 +38,7 @@ phases:
       - echo $BranchName
       - terraform -version
       - python --version
+      - git log -1 --format="%cE"
       - export author=$(git log -1 --format="%cE")
       - echo $author
       - exit 1
@@ -67,6 +68,3 @@ phases:
 artifacts:
   files:
     - "**/*"
-
-
-
