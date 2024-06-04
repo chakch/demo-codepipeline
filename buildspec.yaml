@@ -33,6 +33,7 @@ phases:
       # - command
   build:
     commands:
+      - env
       - cd ${CODEBUILD_SRC_DIR}
       - echo $BranchName
       - terraform -version
