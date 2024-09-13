@@ -1,1 +1,1 @@
-prefix=main
+prefix="main"
